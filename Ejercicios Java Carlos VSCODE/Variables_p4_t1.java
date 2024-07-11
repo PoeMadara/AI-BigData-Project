@@ -23,7 +23,7 @@ public class Variables_p4_t1{
         System.out.println(x);
 
         //Si queremos almacenar valores muy grandes
-        //usaremos long en luger de int
+        //usaremos long en lugar de int
 
         //Números decimales (double y float)
 
@@ -35,13 +35,21 @@ public class Variables_p4_t1{
         System.out.println(x+y);
 
         // Cadenas de caracteres (String)
-        String starPlatinum = "Ora Ora Ora";
-        String ataqueFinal = "Star finger!";
+        String ataqueRegular = "Ora Ora Ora!";
+        String ataqueFinal = "ORAAAAAA!";
         // Definir y asignar valor a la variable
-        System.out.println("Ataca! " + starPlatinum + " ...Bien!, ahora usa... " + ataqueFinal);
+        System.out.println("Ataca Star Platinum! " + ataqueRegular + " ...Bien!, ahora usa... Star Finger! " + ataqueFinal);
 
-        //Una cadena de caracteres ouede ser una cadena vacía
+        //Una cadena de caracteres puede ser una cadena vacía
         String cadenaVacia = "";
 
+        // Caracteres (char)
+        // Hay que tener en cuenta que no es lo mismo "a" (Cadena de texto) que 'a' (Caracter)
+        char letra1 = 'c';
+        char letra2 = 'a';
+        char letra3 = 's';
+        char letra4 = 'a';
+ 
+        System.out.println("Todas las letras juntas hacen: " + letra1 + letra2 + letra3 + letra4);
     }
 }
