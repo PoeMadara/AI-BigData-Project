@@ -1,0 +1,272 @@
+Chapter 2: Supervised Learning
+Supervised learning models transform one or more inputs into one or more outputs. For example, we can use the age and mileage of a second-hand Toyota Prius as inputs, and the estimated vehicle price as the output.
+
+This model is essentially a mathematical formula; when we input data into this formula, the result we get is called "inference." This formula also includes some parameters. Changing the values of the parameters will change the calculation results; the formula describes a "family" of all possible relationships between inputs and outputs, and the parameters define specific relationships within that family.
+
+When we train or learn a model, we are essentially finding parameters that can realistically reflect the relationship between inputs and outputs. The learning algorithm collects a set of input/output pairs and then adjusts these parameters so that the inputs can predict their corresponding outputs as accurately as possible. If the model predicts well for these training data, we hope it will also make good predictions when encountering new unknown outputs in the future.
+
+The goal of this chapter is to delve deeper into these concepts. We will first describe this framework in more detail and introduce some professional symbols. Then, we will use a simple example to demonstrate how to use a straight line to describe the relationship between input and output. This linear model is easy to understand and intuitive, yet it happens to contain all the key concepts of supervised learning.
+
+2.1 Introduction to Supervised Learning
+In supervised learning, our goal is to build a model that can receive input 
+𝑥
+x and give a prediction result 
+𝑦
+y. Simply put, we assume that both the input 
+𝑥
+x and the output 
+𝑦
+y are pre-defined and fixed-size vectors, and the order of the elements in these vectors is always consistent. For example, in the case of the Prius car, the input 
+𝑥
+x always contains the car's age first and then its mileage in this order. This type of data is called structured or tabular data.
+
+To make a prediction, we need a function model 
+𝑓
+[
+⋅
+]
+f[⋅], which takes 
+𝑥
+x as input and returns the prediction result 
+𝑦
+y:
+
+y = f[x] \tag{2.1}
+
+When we calculate the prediction result 
+𝑦
+y based on the input 
+𝑥
+x, this process is called inference.
+
+This model is essentially a mathematical equation with a fixed form, representing various different relationships between input and output. The model also includes some parameters 
+𝜙
+ϕ. The choice of these parameters determines the specific relationship between input and output. More accurately, we should express this relationship as:
+
+y = f[x, \phi] \tag{2.2}
+
+When we talk about learning or training a model, it means we are trying to find parameters 
+𝜙
+ϕ that can reasonably predict outputs based on inputs. We learn these parameters through a training dataset that contains 
+𝐼
+I pairs of input and output samples 
+{
+𝑥
+𝑖
+,
+𝑦
+𝑖
+}
+{x 
+i
+​
+ ,y 
+i
+​
+ }. Our goal is to select parameters that can map each training input to its corresponding output as accurately as possible. We use a loss function 
+𝐿
+L to measure the accuracy of this mapping. The loss function is a scalar value that summarizes the mismatch between the model's predicted output and the actual input based on the current parameters 
+𝜙
+ϕ.
+
+We can think of the loss function as a function of the parameters 
+𝐿
+[
+𝜙
+]
+L[ϕ]. When training the model, our goal is to find a set of parameters 
+𝜙
+^
+ϕ
+^
+​
+  that minimizes the value of the loss function:
+
+\hat{\phi} = \arg \min_{\phi} L[\phi] \tag{2.3}
+
+If the loss is small after this minimization process, it means we have found a set of model parameters that can accurately predict the training output from the training input.
+
+After training the model, we next need to evaluate its performance. We will run the model on an independent set of test data to assess its ability to generalize to examples it has not seen during training. If the model's performance meets expectations, we can begin deploying it.
+
+2.2 Linear Regression Example
+Let’s concretize these theoretical concepts through a simple example. Suppose we have a model 
+𝑦
+=
+𝑓
+[
+𝑥
+,
+𝜙
+]
+y=f[x,ϕ] that can predict a single output 
+𝑦
+y based on a certain input 
+𝑥
+x. Next, we will construct a loss function and discuss how to train this model.
+
+2.2.1 One-Dimensional Linear Regression Model
+The one-dimensional linear regression model shows the relationship between input 
+𝑥
+x and output 
+𝑦
+y in the form of a straight line:
+
+y = f[x, \phi] = \phi_0 + \phi_1 x \tag{2.4}
+
+This model has two parameters 
+𝜙
+=
+[
+𝜙
+0
+,
+𝜙
+1
+]
+𝑇
+ϕ=[ϕ 
+0
+​
+ ,ϕ 
+1
+​
+ ] 
+T
+ , where 
+𝜙
+0
+ϕ 
+0
+​
+  and 
+𝜙
+1
+ϕ 
+1
+​
+  represent the intercept and slope of the line, respectively. Adjusting the values of the intercept and slope can change the relationship between input and output (as shown in Figure 2.1). Therefore, we can think of equation 2.4 as describing a family of possible input-output relationships (i.e., all possible lines). The specific choice of parameters determines the specific member of this family (i.e., a specific line).
+
+2.2.2 Loss
+For this model, the training dataset (see Figure 2.2a) consists of 
+𝐼
+I pairs of input/output data 
+{
+𝑥
+𝑖
+,
+𝑦
+𝑖
+}
+{x 
+i
+​
+ ,y 
+i
+​
+ }. Figures 2.2b–d show three different sets of linear regression models with different parameters. Adjusting the intercept and slope parameters 
+𝜙
+=
+[
+𝜙
+0
+,
+𝜙
+1
+]
+𝑇
+ϕ=[ϕ 
+0
+​
+ ,ϕ 
+1
+​
+ ] 
+T
+  changes the error of the model's prediction results (represented by the orange dashed lines). The loss 
+𝐿
+L here is actually the sum of the squares of these errors. If you look at Figures 2.2b and 2.2c, you will find that their lines do not fit well, resulting in losses 
+𝐿
+L of 7.07 and 10.28, respectively, which are quite large. In Figure 2.2d, the model fits quite well, resulting in a loss 
+𝐿
+L of only 0.20; in fact, this is the line with the smallest possible loss among all possible lines, meaning these parameters are optimal.
+
+Figures
+
+Figure 2.1 Linear Regression Model. Once we determine the choice of parameters 
+𝜙
+=
+[
+𝜙
+0
+,
+𝜙
+1
+]
+𝑇
+ϕ=[ϕ 
+0
+​
+ ,ϕ 
+1
+​
+ ] 
+T
+ , the model can predict the output value (y-axis position) based on the input value (x-axis position). By adjusting the intercept 
+𝜙
+0
+ϕ 
+0
+​
+  and the slope 
+𝜙
+1
+ϕ 
+1
+​
+  of the line, our prediction results (represented by the cyan, orange, and gray lines) will also vary. Therefore, the linear regression model (equation 2.4) actually defines a set of input/output relationships (represented by multiple lines), and the model's parameters determine the specific line we will use (i.e., a specific member of the set).
+
+
+Figure 2.2 Training Data, Model, and Loss in Linear Regression. a) Our training data (marked as orange dots) contains 
+𝐼
+=
+12
+I=12 pairs of input-output data 
+{
+𝑥
+𝑖
+,
+𝑦
+𝑖
+}
+{x 
+i
+​
+ ,y 
+i
+​
+ }. b–d) Each part shows a linear regression model with different parameters. Depending on our choice of intercept and slope parameters 
+𝜙
+=
+[
+𝜙
+0
+,
+𝜙
+1
+]
+𝑇
+ϕ=[ϕ 
+0
+​
+ ,ϕ 
+1
+​
+ ] 
+T
+ , the error of the model's prediction results (represented by the orange dashed lines) may increase or decrease. The loss 
+𝐿
+L here is actually the sum of the squares of these errors. If you look at charts b and c, you will find that their lines do not fit well, resulting in losses 
+𝐿
+L of 7.07 and 10.28, respectively, which are quite large. In chart d, the model fits quite well, resulting in a loss 
+𝐿
+L of only 0.20; in fact, this is the line with the smallest possible loss among all possible lines, meaning these parameters are optimal.
