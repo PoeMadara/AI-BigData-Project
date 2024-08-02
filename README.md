@@ -28,10 +28,6 @@ As part of the project, I have developed two simple chatbot implementations to i
 - Type in simple queries or greetings to receive responses based on predefined keywords.
 - To stop the chatbot, type 'exit', 'quit', or 'stop'.
 
-**Example Keywords and Responses**:
-- 'hello': 'The true power lies within the darkness. What do you seek?'
-- 'how': 'To achieve peace, one must embrace the shadows. How can I assist you?'
-
 **Code**:
 [Rule-Based Chatbot - Level 0](https://github.com/PoeMadara/AI-BigData-Project/blob/main/Level%200/Rule-Based%20Chatbot%20-%20IA%20Level%200.py)
 
@@ -49,13 +45,13 @@ As part of the project, I have developed two simple chatbot implementations to i
 - Use various phrases and keywords to interact with the bot. It will respond based on the patterns defined in the script.
 - To stop the chatbot, type 'exit', 'quit', or 'stop'.
 
-**Example Patterns and Responses**:
-- 'hello': 'The eternal night welcomes you. What do you seek in the realms of the dead?'
-- 'how': 'The shadows of the grave hold many secrets. How may I assist you?'
-
 **Code**:
 [Pattern-Based Chatbot - Level 1](https://github.com/PoeMadara/AI-BigData-Project/blob/main/Level%201/Pattern-Based%20Chatbot%20-%20IA%20Level%201.py)
 
 ---
+
+## Future Developments
+
+I am currently working on evolving these chatbots into more advanced AI systems. The goal is to incorporate machine learning and other advanced techniques to enhance their capabilities and adaptability. Stay tuned for future updates as the project progresses!
 
 For further information or to discuss the project, please reach out to me at carlos.poemadara@gmail.com.
