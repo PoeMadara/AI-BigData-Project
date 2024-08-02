@@ -2,7 +2,7 @@
 
 ### Project on Training Program for Artificial Intelligence and Big Data Programming Applicable in 5G Environments
 
-I started this project in early July 2024. Currently, the project is in a very early phase, so please ignore the "Class tasks" folders.
+I started this project in early July 2024. Currently, the project is in an early phase.
 
 I am working on this project solo, and I am focused on developing and exploring various aspects of AI and Big Data technologies in the context of 5G environments.
 
