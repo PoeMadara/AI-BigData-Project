@@ -9,6 +9,7 @@
 # 3. The AI is designed to handle general queries and provide relevant information.
 # 4. To stop the chatbot, type 'exit', 'quit', or 'stop'.
 #
+# Version 1.0.0
 # Author Carlos (@PoeMadara) - github.com/PoeMadara
 #
 
